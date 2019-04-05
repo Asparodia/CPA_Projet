@@ -444,7 +444,7 @@ def densityScore(name,t):
 #Edge density : 0.18341885134081312
 #densest core ordering prefix: 1007
 
-a = densityScore("/Vrac/TME_CPA_19-02-20/com-orkut.ungraph-clean.txt",100)
+#a = densityScore("/Vrac/TME_CPA_19-02-20/com-orkut.ungraph-clean.txt",100)
 #/Vrac/TME_CPA_19-02-20/com-orkut.ungraph-clean.txt
 #t = 10
 #NbNode : 3072441
