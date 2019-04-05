@@ -322,6 +322,7 @@ def allTriangles(filesName):
 #f = time.time()
 #temps = f - d
 #print(str(q)+" "+str(temps))
+
 #Plot :
 #degDist("/Vrac/TME_CPA_19-02-20/email-Eu-core-clean.txt")
 #degDist("/Vrac/TME_CPA_19-02-20/com-amazon.ungraph-clean.txt")
@@ -371,13 +372,14 @@ def allTriangles(filesName):
 # /Vrac/TME_CPA_19-02-20/com-friendster.ungraph.txt: 
 #a = largestConnectedCompSize("/Vrac/TME_CPA_19-02-20/com-lj.ungraph-clean.txt")
 #print(a)
+
 #lowerBound : 
 # /Vrac/TME_CPA_19-02-20/email-Eu-core-clean.txt : 7 
 # /Vrac/TME_CPA_19-02-20/com-amazon.ungraph-clean.txt : 44
 # /Vrac/TME_CPA_19-02-20/com-lj.ungraph-clean.txt : ram pleine pc bloquer
 # /Vrac/TME_CPA_19-02-20/com-orkut.ungraph-clean.txt :
 # /Vrac/TME_CPA_19-02-20/com-friendster.ungraph.txt: 
-lower = lowerBound("/Vrac/TME_CPA_19-02-20/com-amazon.ungraph-clean.txt",1)
+#lower = lowerBound("/Vrac/TME_CPA_19-02-20/com-amazon.ungraph-clean.txt",1)
 #print(lower)
 
 #listing triangles 

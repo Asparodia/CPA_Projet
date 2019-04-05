@@ -15,7 +15,6 @@ class Graph:
         self.nbNode = 0
         
         self.adjDirected = dict()
-#        self.degOut = dict()
         
         print(" init started ")
         
@@ -32,7 +31,6 @@ class Graph:
                     self.maxi = int(a[0])
                 if(int(a[1])>self.maxi):
                     self.maxi = int(a[1])
-                    
                     
                 if(int(a[0]) in self.adj):
                     self.adj[int(a[0])].add(int(a[1]))
@@ -85,10 +83,6 @@ class Graph:
                     self.adjDirected[int(a[1])] = set()
             self.nbNode = len(self.adjDirected)
             
-#            for k in self.adjDirected.keys():
-#                self.degOut[k]=len(self.adjDirected[k])
-                #self.minHeap.insert((k,self.degOut[k]))
-        
         
     def plotDegIn(self):
         print("ploting...")
@@ -110,8 +104,6 @@ class Graph:
         del x
         del y
     
-
-        
     def CoreDecomposition(self):
         print("Computing coreDecomposition for",self.fileName)
         res = dict()
@@ -188,10 +180,7 @@ class Graph:
         print("Average degre density :",maxi)
         print("Edge density :",edgeDens)
         print("densest core ordering prefix:",av)
-        print("----------------------------------")
-        
-        #self.flush()
-        
+        print("----------------------------------")        
         
         return res
     
@@ -235,7 +224,6 @@ def plotDegNet():
     del y
 
 def densityScore(name,t):
-    
     G = Graph(name,False)
     print("start Density score")
     r = dict()

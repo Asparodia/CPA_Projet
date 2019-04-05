@@ -10,8 +10,8 @@ class PageRank:
     def __init__(self,fileName,alpha = 0.15):
         self.fileName= fileName
         self.alpha = alpha
-        self.T = dict()
-        self.Tinv = dict()
+        self.T = dict() #liste les successeurs d'un noeud
+        self.Tinv = dict() #liste les preds
         self.P = None
         
         self.I = dict()
@@ -215,21 +215,18 @@ def kplusGrand(D,k):
 
 
 #p = PageRank("/Vrac/CPA-PageRank/alr21--dirLinks--enwiki-20071018.txt")
-##p = PageRank("test.txt")
 #p.computation(15)
-#
+
 #petit = kplusPetit(p.P,5)
 #print("les plus petits :\n",petit,findNameById(petit))
 # [(12588429, 8.029414407102666e-08), (141140, 8.029414407102666e-08), (8612315, 8.029414407102666e-08), (12899417, 8.029414407102666e-08), (12899501, 8.029414407102666e-08)]
 # [['Leroy', 'Township,', 'Michigan'], ['WEZG'], ['WJCS'], ['WLJR'], ['WBFR']]
-
 
 #grand = kplusGrand(p.P,5)
 #grand = [(3434750, 0.003641641771341633),(31717, 0.001595610280130652),(11867, 0.001387173142026925),(36164, 0.0013607089814780002),(5843419, 0.0013295272513515564)]
 #print("les plus grand :\n",grand,findNameById(grand))
 #[(3434750, 0.003641641771341633), (31717, 0.001595610280130652), (11867, 0.001387173142026925), (36164, 0.0013607089814780002), (5843419, 0.0013295272513515564)] 
 #[['Germany'], ['United', 'Kingdom'], ['2006'], ['United', 'States'], ['France']]
-
 
 #p.plotDegOut()
 #p.plotDegIn()
