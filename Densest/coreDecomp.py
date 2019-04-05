@@ -452,3 +452,10 @@ def densityScore(name,t):
 #Average degre density : 178.81546683432882
 #Edge density : 0.006246173914850106
 #densest core ordering prefix: 28629
+#t=100
+#/Vrac/TME_CPA_19-02-20/com-orkut.ungraph-clean.txt
+#NbNode : 3072441
+#NbEdge : 117185083
+#Average degre density : 189.1659305993691
+#Edge density : 0.007459518537772353
+#densest core ordering prefix: 25360
