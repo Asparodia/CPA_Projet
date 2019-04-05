@@ -1,29 +1,19 @@
-#!/usr/bin/python3.6
-# coding: utf-8
-
-import gc
-
 import random
 import networkx as nx
 from Community import Community
 
 
-gc.disable()
 
 
 class LabelPropagation(Community):
-    """
-        Label propagation class.
-    """
-
     def __init__(self, graph):
         Community.__init__(self, graph)
 
     def propagation(self):
         # Step 2: Arrange the nodes in the network in a random order
         global neighbors
+        print("Starting label prop")
         random.shuffle(self.nodes)
-
         # Step 3: for each node in the network (in this random order)
         # set its label to a label occurring with the highest frequency
         # among its neighbours
@@ -39,6 +29,7 @@ class LabelPropagation(Community):
             self.end_propagation = True
         else:
             self.nb_label = current_label_count
+                
         del current_label_count
 
         if neighbors:

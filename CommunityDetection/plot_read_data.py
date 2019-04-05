@@ -7,7 +7,7 @@ def edgeArray(fileName):
     for line in f:
         if(line[0]=="#"):
            continue
-        edge=line.split()
+        edge=line[:-1].split()
         edges.append((int(edge[0]),int(edge[1])))
     f.close()
     return edges
@@ -34,25 +34,29 @@ def plot_graph(graph, labels=None):
     pos = nx.spring_layout(graph)  # positions for all nodes
 
     color = ['green', 'blue', 'red', 'yellow', 'orange', 'magenta',
-             'cyan', 'white', 'black']
+             'cyan', 'chocolate', 'pink' ]
 
     i = 0
     for k, v in dict_community.items():
-        if i > len(color):
+        while i >= len(color):
             i -= 1
         nx.draw_networkx_nodes(graph,
                                pos,
                                nodelist=v,
                                node_color=color[i],
-                               node_size=500,
+                               node_size=50,
                                alpha=0.8)
         i += 1
+    
+    del dict_community
+    
     nx.draw_networkx_edges(graph, pos, width=1.0, alpha=0.5)
-    dict_labels = {}
-
-    dict_labels = {node: node for node, label in labels.items()}
-
-    nx.draw_networkx_labels(graph, pos, dict_labels, font_size=16)
+    
+    # Pour avoir les labels sur les node du plot mais c'est moins visible
+#    dict_labels = {}
+#    dict_labels = {node: node for node, label in labels.items()}
+#
+#    #nx.draw_networkx_labels(graph, pos)
 
     plt.axis('off')
     plt.savefig("comunity.png")  # save as png

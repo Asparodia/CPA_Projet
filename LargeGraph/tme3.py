@@ -174,6 +174,7 @@ def edgeArray(fileName):
         edge=line.split()
         if(len(edge)>1):
              edges.append(edge)
+        del edge
     f.close()
     return edges
     
@@ -189,7 +190,7 @@ def BFS(graph, start):
                neighbours = graph[str(node)] 
            for neighbour in neighbours:               
                queue.append((neighbour))
-           
+   del queue      
    return explored
 
 def BFS2(graph, start):
@@ -229,6 +230,27 @@ def exo8(fileName):
 
     return res
 
+def largestConnectedCompSize(fileName):
+    G = adjArray(fileName)
+    
+    res = list()
+    key = list()
+    
+    for c in G.keys():
+        if(c not in key):
+            a = BFS(G,c)
+            res.append((a,len(a)))
+            for i in a:
+                key.append(i)
+            del a
+    maximum = 0
+    del key
+    for i in range (len(res)):
+        if(res[i][1]>maximum):
+            maximum = res[i][1]
+    del res
+    return maximum
+
 def largestConnectedComp(fileName):
     G = adjArray(fileName)
     
@@ -241,12 +263,14 @@ def largestConnectedComp(fileName):
             res.append((a,len(a)))
             for i in a:
                 key.append(i)
+            del a
     maximum = 0
-    
+    del key
     for i in range (len(res)):
         if(res[i][1]>maximum):
             maximum = res[i][1]
             res2 = res[i]
+    del res
     return res2
 
 def lowerBound(fileName,nbIter):
@@ -342,10 +366,10 @@ def allTriangles(filesName):
 #largest connected component
 # /Vrac/TME_CPA_19-02-20/email-Eu-core-clean.txt :  986
 # /Vrac/TME_CPA_19-02-20/com-amazon.ungraph-clean.txt : 334863
-# /Vrac/TME_CPA_19-02-20/com-lj.ungraph-clean.txt : ram pleine pc bloquer
-# /Vrac/TME_CPA_19-02-20/com-orkut.ungraph-clean.txt :
+# /Vrac/TME_CPA_19-02-20/com-lj.ungraph-clean.txt : 3997962
+# /Vrac/TME_CPA_19-02-20/com-orkut.ungraph-clean.txt :Memoire pleine
 # /Vrac/TME_CPA_19-02-20/com-friendster.ungraph.txt: 
-#a = largestConnectedComp("/Vrac/TME_CPA_19-02-20/com-amazon.ungraph-clean.txt")
+#a = largestConnectedCompSize("/Vrac/TME_CPA_19-02-20/com-lj.ungraph-clean.txt")
 #print(a)
 #lowerBound : 
 # /Vrac/TME_CPA_19-02-20/email-Eu-core-clean.txt : 7 
@@ -353,7 +377,7 @@ def allTriangles(filesName):
 # /Vrac/TME_CPA_19-02-20/com-lj.ungraph-clean.txt : ram pleine pc bloquer
 # /Vrac/TME_CPA_19-02-20/com-orkut.ungraph-clean.txt :
 # /Vrac/TME_CPA_19-02-20/com-friendster.ungraph.txt: 
-#lower = lowerBound("/Vrac/TME_CPA_19-02-20/com-amazon.ungraph-clean.txt",4)
+lower = lowerBound("/Vrac/TME_CPA_19-02-20/com-amazon.ungraph-clean.txt",1)
 #print(lower)
 
 #listing triangles 

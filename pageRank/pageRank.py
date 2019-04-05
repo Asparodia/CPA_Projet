@@ -179,6 +179,21 @@ def plotAlpha(a1,a2,fileName,nbIter):
     del x
     del y
 
+def findNameById(l):
+    f = open("/Vrac/CPA-PageRank/alr21--pageNum2Name--enwiki-20071018.txt")
+    res = list()
+    for line in f:
+        if((line[0]=='#') or (line == " ") ):
+           continue
+       
+        s = line.split()
+        if(not s):
+            continue
+        for t in l:
+            if t[0] == int(s[0]):
+                res.append(s[1:]) 
+    return res
+
 def kplusPetit(D,k):
     sorted_by_value = sorted(D.items(), key=lambda kv: kv[1])
     i = 0
@@ -186,6 +201,7 @@ def kplusPetit(D,k):
     for i in range(k):
         res.append(sorted_by_value[i])
     del sorted_by_value
+    
     return res
 
 def kplusGrand(D,k):
@@ -199,18 +215,22 @@ def kplusGrand(D,k):
 
 
 #p = PageRank("/Vrac/CPA-PageRank/alr21--dirLinks--enwiki-20071018.txt")
-#p = PageRank("test.txt")
+##p = PageRank("test.txt")
 #p.computation(15)
-
-#som = 0
-#for k in p.P.keys():
-#    som += p.P[k]
 #
-#print(som)
-#print(kplusPetit(p.P,5))
-#[(12588429, 8.029414407102666e-08), (141140, 8.029414407102666e-08), (8612315, 8.029414407102666e-08), (12899417, 8.029414407102666e-08), (12899501, 8.029414407102666e-08)]
-#print(kplusGrand(p.P,5))
-#[(3434750, 0.003641641771341633), (31717, 0.001595610280130652), (11867, 0.001387173142026925), (36164, 0.0013607089814780002), (5843419, 0.0013295272513515564)]
+#petit = kplusPetit(p.P,5)
+#print("les plus petits :\n",petit,findNameById(petit))
+# [(12588429, 8.029414407102666e-08), (141140, 8.029414407102666e-08), (8612315, 8.029414407102666e-08), (12899417, 8.029414407102666e-08), (12899501, 8.029414407102666e-08)]
+# [['Leroy', 'Township,', 'Michigan'], ['WEZG'], ['WJCS'], ['WLJR'], ['WBFR']]
+
+
+#grand = kplusGrand(p.P,5)
+#grand = [(3434750, 0.003641641771341633),(31717, 0.001595610280130652),(11867, 0.001387173142026925),(36164, 0.0013607089814780002),(5843419, 0.0013295272513515564)]
+#print("les plus grand :\n",grand,findNameById(grand))
+#[(3434750, 0.003641641771341633), (31717, 0.001595610280130652), (11867, 0.001387173142026925), (36164, 0.0013607089814780002), (5843419, 0.0013295272513515564)] 
+#[['Germany'], ['United', 'Kingdom'], ['2006'], ['United', 'States'], ['France']]
+
+
 #p.plotDegOut()
 #p.plotDegIn()
 #p.clean()

@@ -404,7 +404,7 @@ def densityScore(name,t):
 #Edge density : 0.12111730572306292
 #densest core ordering prefix: 188
 
-a = densityScore("/Vrac/TME_CPA_19-02-20/com-amazon.ungraph-clean.txt",1000)
+#a = densityScore("/Vrac/TME_CPA_19-02-20/com-amazon.ungraph-clean.txt",1000)
 #t=10
 #/Vrac/TME_CPA_19-02-20/com-amazon.ungraph-clean.txt
 #NbNode : 334863
@@ -420,16 +420,31 @@ a = densityScore("/Vrac/TME_CPA_19-02-20/com-amazon.ungraph-clean.txt",1000)
 #Edge density : 0.04008958566629339
 #densest core ordering prefix: 95
 #t = 1000
-#/Vrac/TME_CPA_19-02-20/email-Eu-core-clean.txt
-#NbNode : 986
-#NbEdge : 16064
-#Average degre density : 22.648936170212767
-#Edge density : 0.12111730572306292
-#densest core ordering prefix: 188
+#/Vrac/TME_CPA_19-02-20/com-amazon.ungraph-clean.txt
+#NbNode : 334863
+#NbEdge : 925872
+#Average degre density : 3.5625
+#Edge density : 0.0375
+#densest core ordering prefix: 96
     
     
-#a = densityScore("/Vrac/TME_CPA_19-02-20/com-lj.ungraph-clean.txt",10)
-#a = densityScore("/Vrac/TME_CPA_19-02-20/com-orkut.ungraph-clean.txt",10)
+#a = densityScore("/Vrac/TME_CPA_19-02-20/com-lj.ungraph-clean.txt",100)
+#t=10
+#/Vrac/TME_CPA_19-02-20/com-lj.ungraph-clean.txt
+#NbNode : 3997962
+#NbEdge : 34681189
+#Average degre density : 168.89300582847628
+#Edge density : 0.07034277627175188
+#densest core ordering prefix: 2402
+#t=100
+#/Vrac/TME_CPA_19-02-20/com-lj.ungraph-clean.txt
+#NbNode : 3997962
+#NbEdge : 34681189
+#Average degre density : 184.519364448858
+#Edge density : 0.18341885134081312
+#densest core ordering prefix: 1007
+
+a = densityScore("/Vrac/TME_CPA_19-02-20/com-orkut.ungraph-clean.txt",100)
 #/Vrac/TME_CPA_19-02-20/com-orkut.ungraph-clean.txt
 #t = 10
 #NbNode : 3072441
