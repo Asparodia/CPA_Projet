@@ -307,7 +307,6 @@ def allTriangles(filesName):
             if(l in res):
                 continue
             res.append(l)       
-            quantity
     return res
 
 #Quantity : 

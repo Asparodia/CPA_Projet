@@ -230,23 +230,22 @@ def densityScore(name,t):
     for i in G.adjDirected.keys():
         r[i]=0.0
     for x in range(t):
-        print("iter num :",x+1)
+#        print("iter num :",x+1)
         for i in G.adjDirected.keys():
             for j in G.adjDirected[i]:
                 if(r[i] <= r[j]):
                     r[i] += 1.0
                 else:
                     r[j] += 1.0
+    
     for y in r.keys():
         r[y] = r[y]/t
     
-    
     a = sorted(r.items(), key = lambda x:x[1],reverse=True)
+    print(r)
     del r
-    
     tableau = np.zeros(G.maxi+1)
     delLogique = np.zeros(G.maxi+1)
-    
     ind = 0
     for i in a:
         node = i[0]
@@ -265,7 +264,6 @@ def densityScore(name,t):
     edgeDens = 0
     av = 0
     
-    
     for i in range(1,tableau.size):
         tableau[i] += tableau[i-1]
         if(maxi<tableau[i]/i):
@@ -273,7 +271,6 @@ def densityScore(name,t):
             if(i-1!=0):
                 edgeDens = tableau[i]/(i*(i-1))
             av = i
-    
     del tableau
     
     print(G.fileName)
@@ -284,7 +281,73 @@ def densityScore(name,t):
     print("densest core ordering prefix:",av)
     print("----------------------------------")
     
-    G.flush()        
+    G.flush()
+
+def densityScoreExo4(name,t):
+    f = open(name)
+    maxi = 0
+    for line in f:
+        a = line[:-1].split()
+        
+        if(int(a[0])>maxi):
+            maxi = int(a[0])
+        if(int(a[1])>maxi):
+            maxi = int(a[1])
+            
+    f.close()
+    tab = np.zeros([(maxi+1),2],dtype='float')
+    
+    for x in range(t):
+        f = open(name)
+        for line in f:
+            a = line[:-1].split()
+            i = int(a[0])
+            j = int(a[1])
+            if(tab[i][1]<=tab[j][1]):
+                tab[i][1] = tab[i][1]+1
+                tab[i][0] = int(i)
+            else:
+                tab[j][1] = tab[j][1]+1
+                tab[j][0] = int(j)
+        f.close()  
+    for y in range(0,maxi+1):
+        tab[y][1] = tab[y][1]/t
+    a = tab[tab[:,1].argsort()]
+    
+    del tab 
+    
+    delLogique = np.zeros(maxi+1)
+    tableau = np.zeros(maxi+1)
+    
+    ind = 0
+    for i in range(maxi,0,-1):
+        node = a[i][0]
+        delLogique[int(node)] = 1
+        val = 0
+        for j in range(i,0,-1):
+            if(delLogique[j] == 1):
+                val += 1 
+        tableau[ind] = val
+        ind += 1
+    del delLogique
+    
+    maxi = 0   
+    edgeDens = 0
+    av = 0
+    for i in range(1,tableau.size):
+        tableau[i] += tableau[i-1]
+        if(maxi<tableau[i]/i):
+            maxi = tableau[i]/i
+            if(i-1!=0):
+                edgeDens = tableau[i]/(i*(i-1))
+            av = i
+    del tableau
+    
+    print(name)
+    print("Average degre density :",maxi)
+    print("Edge density :",edgeDens)
+    print("densest core ordering prefix:",av)
+    print("----------------------------------")
         
 
 # /Vrac/TME_CPA_19-02-20/email-Eu-core-clean.txt
@@ -416,7 +479,7 @@ def densityScore(name,t):
 #densest core ordering prefix: 96
     
     
-#a = densityScore("/Vrac/TME_CPA_19-02-20/com-lj.ungraph-clean.txt",100)
+#a = densityScore("/Vrac/TME_CPA_19-02-20/com-lj.ungraph-clean.txt",1000)
 #t=10
 #/Vrac/TME_CPA_19-02-20/com-lj.ungraph-clean.txt
 #NbNode : 3997962
@@ -447,3 +510,4 @@ def densityScore(name,t):
 #Average degre density : 189.1659305993691
 #Edge density : 0.007459518537772353
 #densest core ordering prefix: 25360
+    
