@@ -242,11 +242,11 @@ def densityScore(name,t):
         r[y] = r[y]/t
     
     a = sorted(r.items(), key = lambda x:x[1],reverse=True)
-    print(r)
     del r
     tableau = np.zeros(G.maxi+1)
     delLogique = np.zeros(G.maxi+1)
     ind = 0
+    
     for i in a:
         node = i[0]
         delLogique[node] = 1
@@ -310,8 +310,10 @@ def densityScoreExo4(name,t):
                 tab[j][1] = tab[j][1]+1
                 tab[j][0] = int(j)
         f.close()  
+    
     for y in range(0,maxi+1):
         tab[y][1] = tab[y][1]/t
+    
     a = tab[tab[:,1].argsort()]
     
     del tab 
@@ -330,10 +332,11 @@ def densityScoreExo4(name,t):
         tableau[ind] = val
         ind += 1
     del delLogique
-    
+    print(tableau)
     maxi = 0   
     edgeDens = 0
     av = 0
+    
     for i in range(1,tableau.size):
         tableau[i] += tableau[i-1]
         if(maxi<tableau[i]/i):
@@ -432,7 +435,7 @@ def densityScoreExo4(name,t):
 
 ##################### EXO 3 ########################################
 
-#a = densityScore("/Vrac/TME_CPA_19-02-20/email-Eu-core-clean.txt",1000)
+#a = densityScore("/Vrac/TME_CPA_19-02-20/email-Eu-core-clean.txt",100)
 #/Vrac/TME_CPA_19-02-20/email-Eu-core-clean.txt
 #t = 10 
 #NbNode : 986
@@ -494,6 +497,13 @@ def densityScoreExo4(name,t):
 #Average degre density : 184.519364448858
 #Edge density : 0.18341885134081312
 #densest core ordering prefix: 1007
+#t=1000
+#/Vrac/TME_CPA_19-02-20/com-lj.ungraph-clean.txt
+#NbNode : 3997962
+#NbEdge : 34681189
+#Average degre density : 184.50445103857567
+#Edge density : 0.18267767429561949
+#densest core ordering prefix: 1011
 
 #a = densityScore("/Vrac/TME_CPA_19-02-20/com-orkut.ungraph-clean.txt",100)
 #/Vrac/TME_CPA_19-02-20/com-orkut.ungraph-clean.txt
@@ -511,3 +521,4 @@ def densityScoreExo4(name,t):
 #Edge density : 0.007459518537772353
 #densest core ordering prefix: 25360
     
+#densityScoreExo4("file_test-clean.txt",100)
