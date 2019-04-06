@@ -521,4 +521,4 @@ def densityScoreExo4(name,t):
 #Edge density : 0.007459518537772353
 #densest core ordering prefix: 25360
     
-#densityScoreExo4("file_test-clean.txt",100)
+#densityScore("file_test-clean.txt",1000)
